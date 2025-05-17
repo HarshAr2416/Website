@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harsh - Edits & Coder Portfolio</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e6f3;
+      min-height: 100%;
+    }
+    body {
+      max-width: 960px;
+      margin: 50px auto;
+      padding: 25px 30px;
+      background: rgba(20, 23, 29, 0.9);
+      border-radius: 24px;
+      box-shadow:
+        0 8px 48px rgba(0,0,0,0.85),
+        0 6px 30px rgba(0,0,0,0.7);
+      font-size: 18px;
+      line-height: 1.75;
+      color: #d6d9e3;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated gradient background overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(270deg, #00ffe7, #2193b0, #6dd5ed, #1e3c72);
+      background-size: 800% 800%;
+      animation: gradientShift 20s ease infinite;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: -1;
+    }
+    @keyframes gradientShift {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 40px;
+      border-bottom: 1.5px solid rgba(230,230,255,0.1);
+      position: relative;
+      z-index: 10;
+      flex-wrap: wrap;
+      justify-content: center;
+      /* To vertically align lion face and text */
+    }
+
+    /* Lion face and text container */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: default;
+      user-select: none;
+    }
+
+    /* Lion SVG style */
+    .lion-svg {
+      width: 72px;
+      height: 72px;
+      fill: #80d0c7;
+      filter:
+        drop-shadow(0 0 6px #22c1c3)
+        drop-shadow(0 0 12px #1de9b6);
+      flex-shrink: 0;
+    }
+
+    /* The text "Harsh" starting from hair */
+    header h1 {
+      font-weight: 900;
+      font-size: 4rem;
+      color: #80d0c7;
+      letter-spacing: 4px;
+      font-family: 'Montserrat', sans-serif;
+      text-shadow: 0 0 10px #45a29e, 0 0 35px #22c1c3;
+      animation: textGlow 3s ease-in-out infinite alternate;
+      user-select: text;
+      margin-left: -6px; /* Overlap a bit with lion's hair for 'embedded' effect */
+    }
+    @keyframes textGlow {
+      0% {
+        text-shadow:
+          0 0 10px #45a29e,
+          0 0 20px #22c1c3,
+          0 0 40px #1de9b6;
+      }
+      100% {
+        text-shadow:
+          0 0 25px #22c1c3,
+          0 0 45px #1de9b6,
+          0 0 60px #13b7a0;
+      }
+    }
+
+    nav {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: #70f3f8;
+      font-size: 1.2rem;
+      position: relative;
+      padding: 8px 16px;
+      border-radius: 40px;
+      transition: all 0.4s ease;
+      box-shadow:
+        0 0 10px #70f3f8,
+        0 0 20px #44c2c8;
+      backdrop-filter: blur(4px);
+      background: rgba(255 255 255 / 0.1);
+      user-select: none;
+    }
+    nav a::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 40px;
+      top: 0;
+      left: 0;
+      background: #44c2c8;
+      filter: blur(12px);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #122c33;
+      background: #70f3f8;
+      box-shadow:
+        0 5px 15px #70f3f8,
+        0 0 30px #70f3f8;
+      outline: none;
+    }
+    nav a:hover::before,
+    nav a:focus::before {
+      opacity: 1;
+    }
+
+    main {
+      margin-top: 48px;
+      position: relative;
+      z-index: 10;
+    }
+
+    section {
+      margin: 70px 0;
+      padding: 38px 44px;
+      background: rgba(21, 27, 34, 0.85);
+      border-radius: 28px;
+      box-shadow:
+        0 0 25px rgba(112, 243, 248, 0.45),
+        0 15px 50px rgba(0,0,0,0.85);
+      transition: box-shadow 0.5s ease;
+      backdrop-filter: saturate(180%) blur(14px);
+      border: 1px solid rgba(112,243,248,0.3);
+    }
+    section:hover {
+      box-shadow:
+        0 0 50px #70f3f8,
+        0 25px 60px rgba(0,0,0,0.9);
+    }
+    section h2 {
+      font-size: 3rem;
+      margin-bottom: 34px;
+      color: #50e3e6;
+      border-bottom: 5px solid #50e3e6;
+      padding-bottom: 14px;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 2.3px;
+      text-shadow: 0 0 20px #50e3e6;
+      text-transform: uppercase;
+    }
+
+    /* About */
+    #about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 36px;
+      color: #b0bec5;
+      font-size: 1.25rem;
+      line-height: 1.85;
+      font-weight: 400;
+    }
+    #about img {
+      max-width: 240px;
+      width: 100%;
+      border-radius: 22px;
+      box-shadow:
+        0 0 30px #70f3f8;
+      transition: transform 0.4s ease;
+      filter: drop-shadow(0 0 15px #44c2c8);
+      cursor: default;
+      user-select: none;
+    }
+    #about img:hover {
+      transform: scale(1.08) rotate(3deg);
+      filter: drop-shadow(0 0 30px #70f3f8);
+    }
+    #about .intro-text {
+      flex: 1;
+      min-width: 280px;
+      user-select: text;
+    }
+
+    /* Video Editing */
+    #video-editing .video-scroll-container {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #44c2c8 transparent;
+      padding-bottom: 16px;
+    }
+    #video-editing .video-scroll-container::-webkit-scrollbar {
+      height: 10px;
+    }
+    #video-editing .video-scroll-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    #video-editing .video-scroll-container::-webkit-scrollbar-thumb {
+      background-color: #44c2c8;
+      border-radius: 10px;
+      border: 3px solid transparent;
+    }
+
+    .video-thumb {
+      flex: 0 0 auto;
+      width: 320px;
+      height: 180px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      box-shadow:
+        0 10px 25px rgba(13, 221, 250, 0.75);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      background: #0a3e50;
+      user-select: none;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .video-thumb:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 20px 35px rgba(13, 221, 250, 0.90);
+      border-color: #0cf9ff;
+    }
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      user-select: none;
+    }
+    .video-thumb:hover img {
+      transform: scale(1.07);
+    }
+    .video-thumb .title {
+      position: absolute;
+      bottom: 8px;
+      left: 12px;
+      right: 12px;
+      color: #cfffff;
+      text-shadow: 0 0 10px #00eaff;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: none;
+    }
+
+    #video-editing.expanded .video-scroll-container {
+      display: none;
+    }
+    #video-editing.expanded .video-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      overflow: visible;
+      max-height: none;
+      padding-bottom: 0;
+    }
+    #video-editing .video-grid-container {
+      display: none;
+    }
+    #video-editing .video-grid-item {
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow:
+        0 15px 30px rgba(13, 221, 250, 0.75);
+      border: 2px solid transparent;
+      background: #09303e;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      user-select: none;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    #video-editing .video-grid-item:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow:
+        0 28px 60px rgba(13, 221, 250, 0.9);
+      border-color: #0efcff;
+    }
+    #video-editing .video-grid-item img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      user-select: none;
+    }
+    #video-editing .video-grid-item:hover img {
+      transform: scale(1.06);
+    }
+    #video-editing .video-grid-title {
+      padding: 14px 18px;
+      font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      color: #baffff;
+      text-shadow: 0 0 8px #00eaff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: none;
+    }
+
+    /* Show more button */
+    #video-editing .toggle-button,
+    #coding .toggle-button {
+      display: block;
+      margin: 16px auto 0;
+      background: #0cf9ff;
+      color: #122c33;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      cursor: pointer;
+      box-shadow:
+        0 5px 20px #0cf9ffaa;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+      user-select: none;
+      outline-offset: 4px;
+    }
+    #video-editing .toggle-button:hover,
+    #video-editing .toggle-button:focus,
+    #coding .toggle-button:hover,
+    #coding .toggle-button:focus {
+      background: #06c9d9;
+      box-shadow:
+        0 7px 35px #06c9d9cc;
+      outline: none;
+    }
+
+    /* Coding Section - Scrollable */
+    #coding .code-scroll-container {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #44c2c8 transparent;
+      padding-bottom: 16px;
+    }
+    #coding .code-scroll-container::-webkit-scrollbar {
+      height: 10px;
+    }
+    #coding .code-scroll-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    #coding .code-scroll-container::-webkit-scrollbar-thumb {
+      background-color: #44c2c8;
+      border-radius: 10px;
+      border: 3px solid transparent;
+    }
+
+    .code-thumb {
+      flex: 0 0 auto;
+      width: 320px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #1b2735, #3a5967);
+      box-shadow: 0 10px 25px rgba(58, 89, 103, 0.6);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      color: #afd3e8;
+      user-select: none;
+      border: 2px solid transparent;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+    }
+    .code-thumb:hover {
+      box-shadow: 0 20px 38px rgba(13, 221, 250, 0.75);
+      border-color: #0cf9ff;
+      transform: scale(1.04);
+    }
+    .code-thumb h3 {
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.35rem;
+      color: #50e3e6;
+      margin-bottom: 10px;
+      text-shadow: 0 0 8px #00eaff;
+    }
+    .code-thumb p {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #aad7f7;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+
+    /* Coding Section - Grid */
+    #coding.expanded .code-scroll-container {
+      display: none;
+    }
+    #coding.expanded .code-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      overflow: visible;
+      max-height: none;
+      padding-bottom: 0;
+    }
+    #coding .code-grid-container {
+      display: none;
+    }
+    .code-grid-item {
+      background: linear-gradient(135deg, #15272b, #3a5967);
+      border-radius: 20px;
+      padding: 28px 30px;
+      box-shadow: 0 15px 35px rgba(58, 89, 103, 0.95);
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+      color: #b9d9e9;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      user-select: text;
+      border: 1.5px solid rgba(75, 132, 153, 0.8);
+      display: flex;
+      flex-direction: column;
+      height: 200px;
+      justify-content: space-between;
+      text-decoration: none;
+    }
+    .code-grid-item:hover {
+      box-shadow: 0 32px 64px rgba(13, 221, 250, 0.75), 0 14px 28px rgba(0,0,0,0.85);
+      transform: translateY(-14px);
+      border-color: #0cf9ff;
+    }
+    .code-grid-item h3 {
+      margin-bottom: 10px;
+      color: #53f0eb;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      letter-spacing: 1.3px;
+      text-shadow: 0 0 12px #53f0eb;
+      font-size: 1.4rem;
+    }
+    .code-grid-item p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 5;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+
+    /* Contact */
+    #contact p {
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      color: #a7bdca;
+    }
+    #contact a {
+      color: #53f0eb;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: color 0.4s ease;
+      text-shadow: 0 0 12px #53f0eb;
+      user-select: text;
+    }
+    #contact a:hover,
+    #contact a:focus {
+      color: #33cad1;
+      outline: none;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      color: #607d8b;
+      font-size: 1rem;
+      letter-spacing: 1.25px;
+      padding-bottom: 20px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media(max-width: 650px) {
+      #about {
+        flex-direction: column;
+        text-align: center;
+      }
+      header {
+        justify-content: center;
+      }
+      .logo-container {
+        justify-content: center;
+      }
+      header h1 {
+        font-size: 3rem;
+      }
+      .lion-svg {
+        width: 56px;
+        height: 56px;
+      }
+      header p {
+        font-size: 1.15rem;
+      }
+      section h2 {
+        font-size: 2.4rem;
+      }
+      #about .intro-text {
+        font-size: 1.2rem;
+      }
+      nav {
+        flex-wrap: wrap;
+        gap: 28px;
+      }
+      nav a {
+        padding: 12px 28px;
+        font-size: 1.1rem;
+      }
+
+      /* Scroll container tweaks for touch */
+      #video-editing .video-scroll-container,
+      #coding .code-scroll-container {
+        padding-bottom: 22px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header>
+    <div class="logo-container" aria-label="Logo and site name">
+      <!-- Lion face facing right as SVG -->
+      <svg class="lion-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="lionTitle">
+        <title id="lionTitle">Roaring Lion Face</title>
+        <g fill="none" stroke="#80d0c7" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M20 32c0-10 6-18 12-18s12 8 12 18-6 18-12 18-12-8-12-18z"/>
+          <path d="M16 30c0 0 0-12 8-18M48 30c0 0 0-12-8-18"/>
+          <path d="M22 35c-2 0-6 8-6 8M42 35c2 0 6 8 6 8"/>
+          <path d="M32 22v24M28 26l8 0M28 34l8 0"/>
+          <circle cx="27" cy="30" r="1" fill="#80d0c7" stroke="none"/>
+          <circle cx="37" cy="30" r="1" fill="#80d0c7" stroke="none"/>
+          <path d="M30 42c1 1 4 1 5 0" />
+          <path d="M30 38c1 0 4 0 5 0" />
+        </g>
+      </svg>
+      <h1>Harsh</h1>
+    </div>
+  </header>
+
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="#about" tabindex="1">About Me</a>
+    <a href="#video-editing" tabindex="2">Video Editing</a>
+    <a href="#coding" tabindex="3">Coding</a>
+    <a href="#contact" tabindex="4">Contact</a>
+  </nav>
+
+  <main>
+
+    <!-- About Section -->
+    <section id="about" tabindex="5" aria-label="About Me">
+      <img src="Profile pic.jpg" alt="Photo of Harsh" />
+      <div class="intro-text">
+        <p>Hello! I’m Harsh, a passionate video editor and coder. I enjoy crafting visually appealing videos and building efficient, creative coding projects. With a keen eye for detail and a drive for excellence, I aim to deliver quality work that stands out.</p>
+      </div>
+    </section>
+
+    <!-- Video Editing Section -->
+    <section id="video-editing" tabindex="6" aria-label="Video Editing Work" aria-live="polite" >
+      <h2>Video Editing Work</h2>
+      <div class="video-scroll-container" id="video-scroll-container" aria-label="Scrollable video preview"></div>
+      <div class="video-grid-container" id="video-grid-container" aria-label="Expanded full video list"></div>
+      <button class="toggle-button" id="toggle-video" aria-pressed="false" aria-controls="video-grid-container video-scroll-container">Show More Videos</button>
+    </section>
+
+    <!-- Coding Section -->
+    <section id="coding" tabindex="7" aria-label="Coding Work">
+      <h2>Coding Projects</h2>
+      <div class="code-scroll-container" id="code-scroll-container" aria-label="Scrollable coding preview"></div>
+      <div class="code-grid-container" id="code-grid-container" aria-label="Expanded full coding list"></div>
+      <button class="toggle-button" id="toggle-code" aria-pressed="false" aria-controls="code-grid-container code-scroll-container">Show More Projects</button>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" tabindex="8" aria-label="Contact Information">
+      <h2>Contact Me</h2>
+      <p>If you'd like to get in touch, feel free to reach out via any of the following:</p>
+      <p>Email: <a href="mailto:your.email@example.com" tabindex="9">your.email@example.com</a></p>
+      <p>Phone: <a href="tel:+91 9719063030" tabindex="10">+91 9719063030</a></p>
+      <p>Or connect with me on <a href="https://www.linkedin.com/in/harsh-bansal-9b3510327/" target="_blank" rel="noopener" tabindex="11">LinkedIn</a></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Harsh. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Video Editing Videos
+    const videos = [
+      {
+        title: 'Dynamic Promo Edit',
+        thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+      },
+      {
+        title: 'Cinematic Short Film',
+        thumbnail: 'https://img.youtube.com/vi/ScMzIvxBSi4/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=ScMzIvxBSi4'
+      },
+      {
+        title: 'Music Video Edit',
+        thumbnail: 'https://img.youtube.com/vi/3tmd-ClpJxA/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=3tmd-ClpJxA'
+      },
+      {
+        title: 'Travel Vlog Highlight',
+        thumbnail: 'https://img.youtube.com/vi/e-ORhEE9VVg/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=e-ORhEE9VVg'
+      },
+      {
+        title: 'Tutorial Series Intro',
+        thumbnail: 'https://img.youtube.com/vi/V-_O7nl0Ii0/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=V-_O7nl0Ii0'
+      },
+      {
+        title: 'Wedding Highlights',
+        thumbnail: 'https://img.youtube.com/vi/l482T0yNkeo/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=l482T0yNkeo'
+      },
+      {
+        title: 'Corporate Promo',
+        thumbnail: 'https://img.youtube.com/vi/tVj0ZTS4WF4/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=tVj0ZTS4WF4'
+      },
+      {
+        title: 'Event Recap',
+        thumbnail: 'https://img.youtube.com/vi/kXYiU_JCYtU/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=kXYiU_JCYtU'
+      },
+      {
+        title: 'Product Demo',
+        thumbnail: 'https://img.youtube.com/vi/hLQl3WQQoQ0/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=hLQl3WQQoQ0'
+      },
+      {
+        title: 'Animation Reel',
+        thumbnail: 'https://img.youtube.com/vi/djV11Xbc914/hqdefault.jpg',
+        url: 'https://www.youtube.com/watch?v=djV11Xbc914'
+      }
+    ];
+
+    // Coding Projects
+    const projects = [
+      {
+        title: 'Portfolio Website',
+        description: 'A sleek, modern portfolio website built with HTML, CSS, and JS showcasing my skills and projects.',
+        url: 'https://github.com/yourusername/portfolio-website'
+      },
+      {
+        title: 'Task Manager App',
+        description: 'A responsive task management app built using React and Firebase for real-time sync and authentication.',
+        url: 'https://github.com/yourusername/task-manager-app'
+      },
+      {
+        title: 'Weather Dashboard',
+        description: 'A weather forecasting dashboard using OpenWeatherMap API for real-time weather updates.',
+        url: 'https://github.com/yourusername/weather-dashboard'
+      },
+      {
+        title: 'Chat Application',
+        description: 'Real-time chat application leveraging WebSocket for live messaging, built with Node.js and Socket.io.',
+        url: 'https://github.com/yourusername/chat-application'
+      },
+      {
+        title: 'E-commerce Backend',
+        description: 'RESTful API backend for an e-commerce platform built with Express.js and MongoDB.',
+        url: 'https://github.com/yourusername/ecommerce-backend'
+      },
+      {
+        title: 'Blog Platform',
+        description: 'Multi-user blog platform with markdown support and user authentication using Django.',
+        url: 'https://github.com/yourusername/blog-platform'
+      },
+      {
+        title: 'Game Development',
+        description: '2D arcade game created using Unity and C# with engaging levels and clean UI.',
+        url: 'https://github.com/yourusername/game-development'
+      },
+      {
+        title: 'Data Visualization',
+        description: 'Interactive data visualization dashboard powered by D3.js for complex datasets.',
+        url: 'https://github.com/yourusername/data-visualization'
+      },
+      {
+        title: 'Fitness Tracker',
+        description: 'Mobile-friendly fitness tracker app built with React Native and Expo.',
+        url: 'https://github.com/yourusername/fitness-tracker'
+      },
+      {
+        title: 'AI Chatbot',
+        description: 'Chatbot powered by NLP techniques implemented in Python and Flask.',
+        url: 'https://github.com/yourusername/ai-chatbot'
+      }
+    ];
+
+    // Video Editing Rendering
+    const videoScrollContainer = document.getElementById('video-scroll-container');
+    const videoGridContainer = document.getElementById('video-grid-container');
+    const toggleVideoBtn = document.getElementById('toggle-video');
+    let videoExpanded = false;
+
+    function renderScrollVideos() {
+      videoScrollContainer.innerHTML = '';
+      const limit = Math.min(6, videos.length);
+      for(let i = 0; i < limit; i++) {
+        const v = videos[i];
+        const a = document.createElement('a');
+        a.href = v.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'video-thumb';
+        a.setAttribute('aria-label', `Watch video: ${v.title}`);
+        a.innerHTML = `
+          <img src="\${v.thumbnail}" alt="Thumbnail of \${v.title}" />
+          <div class="title">\${v.title}</div>
+        `;
+        videoScrollContainer.appendChild(a);
+      }
+    }
+
+    function renderGridVideos() {
+      videoGridContainer.innerHTML = '';
+      const limit = Math.min(10, videos.length);
+      for(let i = 0; i < limit; i++) {
+        const v = videos[i];
+        const a = document.createElement('a');
+        a.href = v.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'video-grid-item';
+        a.setAttribute('aria-label', `Watch video: ${v.title}`);
+        a.innerHTML = `
+          <img src="\${v.thumbnail}" alt="Thumbnail of \${v.title}" />
+          <div class="video-grid-title">\${v.title}</div>
+        `;
+        videoGridContainer.appendChild(a);
+      }
+    }
+
+    function toggleVideoSection() {
+      videoExpanded = !videoExpanded;
+      const veSection = document.getElementById('video-editing');
+      if(videoExpanded) {
+        veSection.classList.add('expanded');
+        toggleVideoBtn.textContent = 'Show Less Videos';
+        toggleVideoBtn.setAttribute('aria-pressed', 'true');
+      } else {
+        veSection.classList.remove('expanded');
+        toggleVideoBtn.textContent = 'Show More Videos';
+        toggleVideoBtn.setAttribute('aria-pressed', 'false');
+      }
+      veSection.scrollIntoView({behavior: 'smooth'});
+    }
+
+    // Coding Projects Rendering
+    const codeScrollContainer = document.getElementById('code-scroll-container');
+    const codeGridContainer = document.getElementById('code-grid-container');
+    const toggleCodeBtn = document.getElementById('toggle-code');
+    let codeExpanded = false;
+
+    function renderScrollProjects() {
+      codeScrollContainer.innerHTML = '';
+      const limit = Math.min(4, projects.length);
+      for(let i = 0; i < limit; i++) {
+        const p = projects[i];
+        const a = document.createElement('a');
+        a.href = p.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'code-thumb';
+        a.setAttribute('aria-label', `Open project: ${p.title}`);
+        a.innerHTML = `
+          <h3>\${p.title}</h3>
+          <p>\${p.description}</p>
+        `;
+        codeScrollContainer.appendChild(a);
+      }
+    }
+
+    function renderGridProjects() {
+      codeGridContainer.innerHTML = '';
+      const limit = Math.min(10, projects.length);
+      for(let i = 0; i < limit; i++) {
+        const p = projects[i];
+        const a = document.createElement('a');
+        a.href = p.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'code-grid-item';
+        a.setAttribute('aria-label', `Open project: ${p.title}`);
+        a.innerHTML = `
+          <h3>\${p.title}</h3>
+          <p>\${p.description}</p>
+        `;
+        codeGridContainer.appendChild(a);
+      }
+    }
+
+    function toggleCodeSection() {
+      codeExpanded = !codeExpanded;
+      const codeSection = document.getElementById('coding');
+      if(codeExpanded) {
+        codeSection.classList.add('expanded');
+        toggleCodeBtn.textContent = 'Show Less Projects';
+        toggleCodeBtn.setAttribute('aria-pressed', 'true');
+      } else {
+        codeSection.classList.remove('expanded');
+        toggleCodeBtn.textContent = 'Show More Projects';
+        toggleCodeBtn.setAttribute('aria-pressed', 'false');
+      }
+      codeSection.scrollIntoView({behavior: 'smooth'});
+    }
+
+    // Initialize
+    renderScrollVideos();
+    renderGridVideos();
+    toggleVideoBtn.addEventListener('click', toggleVideoSection);
+
+    renderScrollProjects();
+    renderGridProjects();
+    toggleCodeBtn.addEventListener('click', toggleCodeSection);
+  </script>
+
+</body>
+</html>
