@@ -668,9 +668,9 @@
     // Video Editing Videos
     const videos = [
       {
-        title: 'Dynamic Promo Edit',
+        title: 'Krishna Edit',
         thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg',
-        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+        url: 'https://youtube.com/shorts/SXDAHkicUy4?feature=shared'
       },
       {
         title: 'Cinematic Short Film',
@@ -840,7 +840,7 @@
 
     function renderScrollProjects() {
       codeScrollContainer.innerHTML = '';
-      const limit = Math.min(4, projects.length);
+      const limit = Math.min(6, projects.length) // Or 10;
       for(let i = 0; i < limit; i++) {
         const p = projects[i];
         const a = document.createElement('a');
@@ -850,16 +850,16 @@
         a.className = 'code-thumb';
         a.setAttribute('aria-label', `Open project: ${p.title}`);
         a.innerHTML = `
-          <h3>\${p.title}</h3>
-          <p>\${p.description}</p>
-        `;
+  <h3>${p.title}</h3>
+  <p>${p.description}</p>
+`;
         codeScrollContainer.appendChild(a);
       }
     }
 
     function renderGridProjects() {
       codeGridContainer.innerHTML = '';
-      const limit = Math.min(10, projects.length);
+      const limit = Math.min(6, projects.length) // Or 10;
       for(let i = 0; i < limit; i++) {
         const p = projects[i];
         const a = document.createElement('a');
@@ -869,9 +869,9 @@
         a.className = 'code-grid-item';
         a.setAttribute('aria-label', `Open project: ${p.title}`);
         a.innerHTML = `
-          <h3>\${p.title}</h3>
-          <p>\${p.description}</p>
-        `;
+  <h3>${p.title}</h3>
+  <p>${p.description}</p>
+`;
         codeGridContainer.appendChild(a);
       }
     }
